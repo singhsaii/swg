@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Smart Water Guardian dashboard — campus water monitoring, wastage detection and reuse analytics." />
+  <title>Dashboard &middot; Smart Water Guardian</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23002060' d='M12 2.7s6.5 7.1 6.5 11.4A6.5 6.5 0 0 1 5.5 14.1C5.5 9.8 12 2.7 12 2.7Z'/></svg>" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+
+  <!-- Vercel Speed Insights -->
+  <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to dashboard content</a>
+
+  <div class="app">
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="sidebar__head">
+        <span class="brandlockup__mark" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.7s6.5 7.1 6.5 11.4A6.5 6.5 0 0 1 5.5 14.1C5.5 9.8 12 2.7 12 2.7Z" />
+            <path d="M9 13.6l2.2 2.2L15.4 11" />
+          </svg>
+        </span>
+        <span class="brandlockup__text">
+          <span class="brandlockup__name">Smart Water</span>
+          <span class="brandlockup__tag">Guardian</span>
+        </span>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__section">
+          <p class="sidebar__section-label">Monitor</p>
+          <a class="navlink is-active" href="#dashboard" data-nav="dashboard">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6" /><rect x="13.5" y="3.5" width="7" height="7" rx="1.6" /><rect x="3.5" y="13.5" width="7" height="7" rx="1.6" /><rect x="13.5" y="13.5" width="7" height="7" rx="1.6" /></svg>
+            Dashboard
+          </a>
+          <a class="navlink" href="#zones" data-nav="zones">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 3.5-5.5 2.2v14.8L9 18.3l6 2.2 5.5-2.2V3.5L15 5.7Z" /><path d="M9 3.5v14.8" /><path d="M15 5.7v14.8" /></svg>
+            Water Zones
+          </a>
+          <a class="navlink" href="#analytics" data-nav="analytics">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12h4l3-8 5 16 3-8h4" /></svg>
+            Analytics
+          </a>
+        </div>
+
+        <div class="sidebar__section">
+          <p class="sidebar__section-label">Act</p>
+          <a class="navlink" href="#anomalies" data-nav="anomalies">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4 1.9 20.6h20.2Z" /><path d="M12 9.6v4.6" /><circle cx="12" cy="17.4" r="0.9" fill="currentColor" stroke="none" /></svg>
+            Wastage Alerts
+            <span class="navlink__count" id="alert-count">0</span>
+          </a>
+          <a class="navlink" href="#report" data-nav="report">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5Z" /><path d="M14 3.5v5h5" /><path d="M8.8 13h6.4" /><path d="M8.8 16.5h4.4" /></svg>
+            Report Issue
+          </a>
+          <a class="navlink" href="#reuse" data-nav="reuse">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 8.5-3 5.2a2 2 0 0 0 1.7 3h6.2" /><path d="m10.5 3.5 3 5.2a2 2 0 0 1-1.7 3H5.6" /><path d="m16.5 19.5 3-5.2a2 2 0 0 0-1.7-3h-6.2" /></svg>
+            Reuse &amp; Savings
+          </a>
+        </div>
+
+        <div class="sidebar__section">
+          <p class="sidebar__section-label">System</p>
+          <a class="navlink" href="#settings" data-nav="settings">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2" /><path d="M19.6 14.6a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H3.4a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h.1A1.6 1.6 0 0 0 10.4 3.4V3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8v.1a1.6 1.6 0 0 0 1.5 1h.3a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.5 1Z" /></svg>
+            Settings
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar__foot">
+        <p class="sidebar__simulation">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 16.4V11" /><circle cx="12" cy="7.8" r="0.9" fill="currentColor" stroke="none" /></svg>
+          Simulation prototype &mdash; readings are illustrative, not measured campus data.
+        </p>
+      </div>
+    </aside>
+
+
+    <!-- ============================================================
+         TOP BAR
+         ============================================================ -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <span class="topbar__crumb">Smart Water Guardian</span>
+        <h1 class="topbar__title" id="page-title">Dashboard</h1>
+      </div>
+
+      <div class="topbar__right">
+        <div class="topbar__search">
+          <span class="field__icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>
+          </span>
+          <input class="input" type="search" id="global-search" placeholder="Search zones, alerts…" aria-label="Search" />
+        </div>
+
+        <button class="iconbtn" type="button" data-notifications aria-label="Notifications">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8.8a6 6 0 1 0-12 0c0 6.3-2.5 8.2-2.5 8.2h17S18 15.1 18 8.8Z" /><path d="M13.7 20.5a2 2 0 0 1-3.4 0" /></svg>
+          <span class="iconbtn__dot" aria-hidden="true"></span>
+        </button>
+
+        <div class="usermenu">
+          <button class="usermenu__trigger" type="button" id="user-trigger" aria-haspopup="true" aria-expanded="false">
+            <span class="avatar" id="user-avatar">SW</span>
+            <span class="usermenu__meta">
+              <span class="usermenu__name" id="user-name">Campus User</span>
+              <span class="usermenu__role" id="user-role">Administrator</span>
+            </span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5.5 9 6.5 6.5L18.5 9" /></svg>
+          </button>
+
+          <div class="usermenu__panel" id="user-panel" role="menu">
+            <div class="usermenu__head">
+              <div class="usermenu__name" id="user-panel-name">Campus User</div>
+              <div class="usermenu__role" id="user-panel-email">—</div>
+            </div>
+            <button class="usermenu__item" type="button" role="menuitem" data-profile>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6" /><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0" /></svg>
+              My profile
+            </button>
+            <button class="usermenu__item" type="button" role="menuitem" data-settings>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2" /><path d="M19.6 14.6a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H3.4a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h.1A1.6 1.6 0 0 0 10.4 3.4V3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8v.1a1.6 1.6 0 0 0 1.5 1h.3a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.5 1Z" /></svg>
+              Settings
+            </button>
+            <button class="usermenu__item usermenu__item--danger" type="button" role="menuitem" data-logout>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 20.5H6a2.5 2.5 0 0 1-2.5-2.5V6A2.5 2.5 0 0 1 6 3.5h3.5" /><path d="M15.5 16.5 20 12l-4.5-4.5" /><path d="M20 12H9.5" /></svg>
+              Sign out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         MAIN
+         ============================================================ -->
+    <main class="main" id="main-content">
+      <div class="main__inner" id="view-root"></div>
+    </main>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/segmented.js"></script>
+  <script src="assets/js/engine.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

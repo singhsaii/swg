@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Smart Water Guardian — Buttons
+   ========================================================================== */
+
+.btn {
+  --btn-bg: var(--navy-700);
+  --btn-fg: var(--text-on-dark);
+  --btn-border: var(--navy-700);
+  --btn-shadow: var(--shadow-brand);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-5);
+  height: 44px;
+  min-width: 44px;
+  border-radius: var(--radius-md);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-border);
+  box-shadow: var(--btn-shadow);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 32, 96, 0.32);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn .icon { flex: 0 0 auto; }
+
+.btn--primary {
+  --btn-bg: var(--navy-700);
+  --btn-border: var(--navy-700);
+  --btn-fg: var(--text-on-dark);
+}
+
+.btn--accent {
+  --btn-bg: var(--gold-500);
+  --btn-border: var(--gold-500);
+  --btn-fg: var(--navy-800);
+  --btn-shadow: 0 10px 26px rgba(217, 174, 10, 0.34);
+}
+
+.btn--accent:hover:not(:disabled) {
+  box-shadow: 0 14px 32px rgba(217, 174, 10, 0.42);
+}
+
+.btn--aqua {
+  --btn-bg: var(--aqua-500);
+  --btn-border: var(--aqua-500);
+  --btn-fg: #04282D;
+  --btn-shadow: 0 10px 26px rgba(23, 179, 196, 0.32);
+}
+
+.btn--aqua:hover:not(:disabled) {
+  box-shadow: 0 14px 30px rgba(23, 179, 196, 0.4);
+}
+
+.btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--navy-700);
+  --btn-border: var(--border-default);
+  --btn-shadow: none;
+}
+
+.btn--secondary:hover:not(:disabled) {
+  --btn-bg: var(--navy-50);
+  --btn-border: var(--navy-300);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--text-secondary);
+  --btn-border: transparent;
+  --btn-shadow: none;
+}
+
+.btn--ghost:hover:not(:disabled) {
+  --btn-bg: var(--bg-sunken);
+  --btn-fg: var(--navy-700);
+  box-shadow: none;
+}
+
+.btn--danger {
+  --btn-bg: var(--danger-500);
+  --btn-border: var(--danger-500);
+  --btn-fg: var(--text-on-dark);
+  --btn-shadow: 0 10px 26px rgba(198, 40, 40, 0.3);
+}
+
+.btn--block { width: 100%; }
+
+.btn--sm {
+  height: 34px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.btn--lg {
+  height: 52px;
+  padding: 0 var(--space-8);
+  font-size: var(--text-lg);
+  border-radius: var(--radius-lg);
+}
+
+.btn--icon {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+
+/* Spinner */
+.btn__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 640ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

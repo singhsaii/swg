@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Smart Water Guardian — Tabs / Toasts / Modal / Skeleton / Tooltip / Icon
+   ========================================================================== */
+
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  padding: 5px;
+  background: var(--bg-sunken);
+  border-radius: var(--radius-md);
+}
+
+.tabs__btn {
+  flex: 1;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.tabs__btn:hover { color: var(--navy-700); }
+
+.tabs__btn[aria-selected="true"] {
+  background: var(--bg-surface);
+  color: var(--navy-700);
+  box-shadow: var(--shadow-sm);
+}
+
+.toast-stack {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: min(380px, calc(100vw - 2 * var(--space-5)));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--navy-700);
+  box-shadow: var(--shadow-lg);
+  animation: toast-in var(--dur-slow) var(--ease-out);
+}
+
+.toast--success { border-left-color: var(--success-500); }
+.toast--error   { border-left-color: var(--danger-500); }
+.toast--info    { border-left-color: var(--info-500); }
+
+.toast__icon { flex: 0 0 auto; color: var(--navy-700); }
+.toast--success .toast__icon { color: var(--success-500); }
+.toast--error   .toast__icon { color: var(--danger-500); }
+.toast--info    .toast__icon { color: var(--info-500); }
+.toast__icon .icon { width: 20px; height: 20px; }
+
+.toast__title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.toast__body  { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+
+.toast.is-leaving { animation: toast-out var(--dur-base) var(--ease-out) forwards; }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes toast-out {
+  to { opacity: 0; transform: translateX(24px) scale(0.97); }
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--bg-overlay);
+  backdrop-filter: blur(3px);
+  animation: fade-in var(--dur-base) var(--ease-out);
+}
+
+.modal {
+  width: min(520px, 100%);
+  max-height: calc(100vh - 2 * var(--space-8));
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  animation: modal-in var(--dur-slow) var(--ease-out);
+}
+
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-6) var(--space-4);
+}
+
+.modal__title { font-size: var(--text-xl); }
+
+.modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.modal__close:hover { background: var(--bg-sunken); color: var(--navy-700); }
+.modal__close .icon { width: 18px; height: 18px; }
+
+.modal__body { padding: 0 var(--space-6) var(--space-6); }
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6) var(--space-6);
+}
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.skeleton {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--bg-sunken) 25%,
+    #E4EBF5 37%,
+    var(--bg-sunken) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.tooltip-host { position: relative; }
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--navy-800);
+  color: var(--text-on-dark);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  z-index: 60;
+  box-shadow: var(--shadow-md);
+}
+
+.tooltip-host:hover .tooltip { opacity: 1; }
+
+/* ==========================================================================
+   ICON BASE — sizes are fixed so inline SVGs never blow up the layout
+   ========================================================================== */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--filled { fill: currentColor; stroke: none; }
