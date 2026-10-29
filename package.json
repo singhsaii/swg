@@ -1,0 +1,15 @@
+{
+  "name": "smart-water-guardian",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Water Guardian local API and static frontend",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}

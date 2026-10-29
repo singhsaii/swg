@@ -1,0 +1,171 @@
+/* ==========================================================================
+   ZONE TABLE
+   ========================================================================== */
+
+.table-wrap { overflow-x: auto; }
+
+.zonetable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.zonetable thead th {
+  position: sticky;
+  top: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-sunken);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.zonetable tbody td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.zonetable tbody tr {
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.zonetable tbody tr:hover { background: var(--navy-50); }
+.zonetable tbody tr:last-child td { border-bottom: none; }
+
+.zonename {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.zoneicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-sm);
+  background: var(--navy-50);
+  color: var(--navy-600);
+}
+
+.zoneicon .icon { width: 17px; height: 17px; }
+
+.zonetable__num {
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+/* Deviation bar */
+.deviation {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 168px;
+}
+
+.deviation__track {
+  position: relative;
+  flex: 1;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-sunken);
+  overflow: hidden;
+}
+
+.deviation__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: var(--radius-pill);
+  background: var(--success-500);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+
+.deviation__fill--warning { background: var(--warning-500); }
+.deviation__fill--danger  { background: var(--danger-500); }
+
+.deviation__mark {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 2px;
+  background: var(--navy-300);
+}
+
+.deviation__value {
+  min-width: 56px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+}
+
+/* ==========================================================================
+   ANOMALY FEED
+   ========================================================================== */
+
+.feed { display: flex; flex-direction: column; }
+
+.feeditem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.feeditem:last-child { border-bottom: none; }
+.feeditem:hover { background: var(--navy-50); }
+
+.feeditem__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-md);
+  background: var(--navy-50);
+  color: var(--navy-600);
+}
+
+.feeditem__icon .icon { width: 18px; height: 18px; }
+.feeditem__icon--danger  { background: var(--danger-50);  color: var(--danger-500); }
+.feeditem__icon--warning { background: var(--warning-50); color: var(--warning-700); }
+.feeditem__icon--success { background: var(--success-50); color: var(--success-500); }
+.feeditem__icon--aqua    { background: var(--aqua-100);  color: var(--aqua-700); }
+
+.feeditem__body { flex: 1; min-width: 0; }
+
+.feeditem__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.feeditem__meta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+}
+
+.feeditem__side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+  flex: 0 0 auto;
+}

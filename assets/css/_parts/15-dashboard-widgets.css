@@ -1,0 +1,249 @@
+/* ==========================================================================
+   SCORE RING
+   ========================================================================== */
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.score__ring {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  flex: 0 0 auto;
+}
+
+.score__ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+
+.score__track {
+  fill: none;
+  stroke: var(--bg-sunken);
+  stroke-width: 11;
+}
+
+.score__progress {
+  fill: none;
+  stroke: url(#scoreGradient);
+  stroke-width: 11;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.1s var(--ease-out);
+}
+
+.score__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score__value {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--navy-700);
+}
+
+.score__max { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
+
+.score__breakdown { flex: 1; display: flex; flex-direction: column; gap: var(--space-3); }
+
+.score__row { display: flex; flex-direction: column; gap: 5px; }
+
+.score__row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.score__row-label { color: var(--text-secondary); font-weight: var(--weight-medium); }
+.score__row-value { font-weight: var(--weight-semibold); color: var(--text-primary); }
+
+.score__bar {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-sunken);
+  overflow: hidden;
+}
+
+.score__bar-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--navy-600);
+  transition: width 1.1s var(--ease-out);
+}
+
+/* ==========================================================================
+   REUSE MODULE
+   ========================================================================== */
+
+.reuse { display: flex; flex-direction: column; gap: var(--space-5); }
+
+.reuse__flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  gap: var(--space-2);
+}
+
+.reuse__stage {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-sunken);
+}
+
+.reuse__stage--source { background: var(--navy-50); border-color: var(--navy-200); }
+.reuse__stage--reuse  { background: var(--aqua-100); border-color: var(--aqua-300); }
+.reuse__stage--saved  { background: var(--success-50); border-color: var(--success-100); }
+
+.reuse__stage-label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.reuse__stage-value {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--navy-700);
+  line-height: 1.15;
+}
+
+.reuse__stage--reuse .reuse__stage-value { color: var(--aqua-700); }
+.reuse__stage--saved .reuse__stage-value { color: var(--success-700); }
+
+.reuse__stage-sub { font-size: var(--text-2xs); color: var(--text-muted); margin-top: 3px; }
+
+
+/* ==========================================================================
+   CHART (dependency-free CSS bar chart)
+   ========================================================================== */
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  height: 190px;
+  padding-top: var(--space-5);
+}
+
+.chart__col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.chart__bar {
+  position: relative;
+  width: 100%;
+  max-width: 44px;
+  border-radius: var(--radius-sm) var(--radius-sm) 3px 3px;
+  background: linear-gradient(180deg, var(--aqua-400), var(--aqua-600));
+  transition: height 900ms var(--ease-out), filter var(--dur-fast) var(--ease-out);
+  min-height: 4px;
+}
+
+.chart__bar:hover { filter: brightness(1.12); }
+
+.chart__bar--alt { background: linear-gradient(180deg, var(--navy-400), var(--navy-700)); }
+
+.chart__bar-label {
+  font-size: var(--text-2xs);
+  color: var(--text-muted);
+  font-weight: var(--weight-medium);
+}
+
+.chart__legend {
+  display: flex;
+  gap: var(--space-5);
+  justify-content: center;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.chart__legend-swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+/* ==========================================================================
+   REPORT FORM / EMPTY STATE
+   ========================================================================== */
+
+.reportgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .reportgrid { grid-template-columns: 1fr; }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+}
+
+.empty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-sunken);
+  color: var(--text-muted);
+}
+
+.empty__icon .icon { width: 26px; height: 26px; }
+.empty__title { font-size: var(--text-md); font-weight: var(--weight-semibold); }
+.empty__text { font-size: var(--text-sm); color: var(--text-muted); max-width: 42ch; }
+
+/* ==========================================================================
+   RESPONSIVE SHELL
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  .sidebar { display: none; }
+
+  .topbar { padding: 0 var(--space-4); }
+  .topbar__search { display: none; }
+  .main { padding: var(--space-4); }
+}

@@ -1,0 +1,822 @@
+/* --------------------------------------------------------------------------
+   Smart Water Guardian - components.css
+   GENERATED FILE - edit the sources in assets/css/_parts/ instead,
+   then run: powershell -File assets/css/_build.ps1
+   -------------------------------------------------------------------------- */
+
+/* ==========================================================================
+   Smart Water Guardian â€” Buttons
+   ========================================================================== */
+
+.btn {
+  --btn-bg: var(--navy-700);
+  --btn-fg: var(--text-on-dark);
+  --btn-border: var(--navy-700);
+  --btn-shadow: var(--shadow-brand);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-5);
+  height: 44px;
+  min-width: 44px;
+  border-radius: var(--radius-md);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-border);
+  box-shadow: var(--btn-shadow);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 32, 96, 0.32);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn .icon { flex: 0 0 auto; }
+
+.btn--primary {
+  --btn-bg: var(--navy-700);
+  --btn-border: var(--navy-700);
+  --btn-fg: var(--text-on-dark);
+}
+
+.btn--accent {
+  --btn-bg: var(--gold-500);
+  --btn-border: var(--gold-500);
+  --btn-fg: var(--navy-800);
+  --btn-shadow: 0 10px 26px rgba(217, 174, 10, 0.34);
+}
+
+.btn--accent:hover:not(:disabled) {
+  box-shadow: 0 14px 32px rgba(217, 174, 10, 0.42);
+}
+
+.btn--aqua {
+  --btn-bg: var(--aqua-500);
+  --btn-border: var(--aqua-500);
+  --btn-fg: #04282D;
+  --btn-shadow: 0 10px 26px rgba(23, 179, 196, 0.32);
+}
+
+.btn--aqua:hover:not(:disabled) {
+  box-shadow: 0 14px 30px rgba(23, 179, 196, 0.4);
+}
+
+.btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--navy-700);
+  --btn-border: var(--border-default);
+  --btn-shadow: none;
+}
+
+.btn--secondary:hover:not(:disabled) {
+  --btn-bg: var(--navy-50);
+  --btn-border: var(--navy-300);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--text-secondary);
+  --btn-border: transparent;
+  --btn-shadow: none;
+}
+
+.btn--ghost:hover:not(:disabled) {
+  --btn-bg: var(--bg-sunken);
+  --btn-fg: var(--navy-700);
+  box-shadow: none;
+}
+
+.btn--danger {
+  --btn-bg: var(--danger-500);
+  --btn-border: var(--danger-500);
+  --btn-fg: var(--text-on-dark);
+  --btn-shadow: 0 10px 26px rgba(198, 40, 40, 0.3);
+}
+
+.btn--block { width: 100%; }
+
+.btn--sm {
+  height: 34px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+}
+
+.btn--lg {
+  height: 52px;
+  padding: 0 var(--space-8);
+  font-size: var(--text-lg);
+  border-radius: var(--radius-lg);
+}
+
+.btn--icon {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+
+/* Spinner */
+.btn__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 640ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ==========================================================================
+   Smart Water Guardian â€” Form Fields
+   ========================================================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.field__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.field__hint {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+}
+
+.field__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field__icon {
+  position: absolute;
+  left: var(--space-4);
+  display: flex;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.field__icon .icon { width: 18px; height: 18px; }
+
+.input {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--space-4);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  color: var(--text-primary);
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.input::placeholder { color: var(--text-muted); }
+
+.input:hover:not(:disabled) { border-color: var(--navy-300); }
+
+.input:focus {
+  outline: none;
+  border-color: var(--aqua-500);
+  box-shadow: var(--focus-ring);
+  background: var(--bg-surface);
+}
+
+.input:disabled {
+  background: var(--bg-sunken);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.input--with-icon { padding-left: var(--space-11); }
+
+.input--with-action { padding-right: var(--space-12); }
+
+/* Select + textarea share the .input skin */
+select.input {
+  appearance: none;
+  padding-right: var(--space-10);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C8CA5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5.5 9 6.5 6.5L18.5 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  background-size: 16px 16px;
+  cursor: pointer;
+}
+
+textarea.input {
+  height: auto;
+  min-height: 96px;
+  padding: var(--space-3) var(--space-4);
+  line-height: var(--leading-normal);
+  resize: vertical;
+}
+
+input[type="range"].input {
+  height: 8px;
+  padding: 0;
+  border: none;
+  background: var(--bg-sunken);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  accent-color: var(--navy-700);
+}
+
+.field__action {
+  position: absolute;
+  right: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.field__action:hover {
+  background: var(--bg-sunken);
+  color: var(--navy-700);
+}
+
+.field__action .icon { width: 19px; height: 19px; }
+
+.field__control:focus-within .field__icon { color: var(--aqua-600); }
+
+/* Validation states */
+.field--invalid .input {
+  border-color: var(--danger-500);
+  background: var(--danger-50);
+}
+
+.field--invalid .input:focus {
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.22);
+}
+
+.field--valid .input { border-color: var(--success-500); }
+
+.field__error {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--danger-700);
+}
+
+.field--invalid .field__error { display: flex; }
+
+.field__error .icon { width: 14px; height: 14px; flex: 0 0 auto; }
+
+/* Password strength meter */
+.strength {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.strength__bars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.strength__bar {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--border-default);
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+
+.strength__bar.is-on-weak   { background: var(--danger-500); }
+.strength__bar.is-on-fair   { background: var(--warning-500); }
+.strength__bar.is-on-good   { background: var(--aqua-500); }
+.strength__bar.is-on-strong { background: var(--success-500); }
+
+.strength__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+
+/* ==========================================================================
+   Smart Water Guardian â€” Checkbox / Radio / Segmented
+   ========================================================================== */
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-snug);
+  user-select: none;
+}
+
+.checkbox input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+  margin: 1px 0 0;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-xs);
+  background-color: var(--bg-surface);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+  position: relative;
+}
+
+.checkbox input[type="radio"] { border-radius: 50%; }
+
+.checkbox input:checked {
+  background-color: var(--navy-700);
+  border-color: var(--navy-700);
+}
+
+/*
+ * Pseudo-elements cannot be attached to <input> (a replaced element), so the
+ * check mark and radio dot are painted with a background image instead.
+ */
+.checkbox input[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4.5 12.5 5 5 10-11'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 13px 13px;
+}
+
+.checkbox input[type="radio"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='5' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+}
+
+.checkbox input:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+.checkbox a { font-weight: var(--weight-semibold); }
+
+/* Segmented control (role picker) */
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.segmented__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.segmented__option:hover {
+  border-color: var(--navy-300);
+  background: var(--navy-50);
+}
+
+.segmented__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segmented__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  color: var(--text-secondary);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.segmented__icon .icon { width: 19px; height: 19px; }
+
+.segmented__text { display: flex; flex-direction: column; line-height: 1.3; }
+
+.segmented__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.segmented__desc {
+  font-size: var(--text-2xs);
+  color: var(--text-muted);
+}
+
+/* Selected state â€” driven by the `is-selected` class (set by JS) so it
+   works in every browser, including those without :has() support. */
+.segmented__option.is-selected {
+  border-color: var(--navy-700);
+  background: var(--navy-50);
+  box-shadow: 0 0 0 1px var(--navy-700);
+}
+
+.segmented__option.is-selected .segmented__icon {
+  background: var(--navy-700);
+  color: var(--text-on-dark);
+}
+
+/* Native :has() enhancement where available. */
+@supports selector(:has(*)) {
+  .segmented__option:has(input:checked) {
+    border-color: var(--navy-700);
+    background: var(--navy-50);
+    box-shadow: 0 0 0 1px var(--navy-700);
+  }
+
+  .segmented__option:has(input:checked) .segmented__icon {
+    background: var(--navy-700);
+    color: var(--text-on-dark);
+  }
+}
+
+
+/* ==========================================================================
+   Smart Water Guardian â€” Cards / Badges / Alerts / Divider
+   ========================================================================== */
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--padded { padding: var(--space-6); }
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.card__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.card__subtitle {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.card__body { padding: var(--space-6); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.badge--neutral { background: var(--bg-sunken); color: var(--text-secondary); border-color: var(--border-subtle); }
+.badge--navy    { background: var(--navy-50);   color: var(--navy-700);  border-color: var(--navy-200); }
+.badge--aqua    { background: var(--aqua-100);  color: var(--aqua-700);  border-color: var(--aqua-300); }
+.badge--gold    { background: var(--gold-100);  color: var(--gold-700);  border-color: var(--gold-300); }
+.badge--success { background: var(--success-50); color: var(--success-700); border-color: var(--success-100); }
+.badge--warning { background: var(--warning-50); color: var(--warning-700); border-color: var(--warning-100); }
+.badge--danger  { background: var(--danger-50);  color: var(--danger-700);  border-color: var(--danger-100); }
+
+.badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+
+.badge__dot--pulse { animation: pulse 1.9s var(--ease-in-out) infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(0.8); }
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+.alert .icon { width: 18px; height: 18px; flex: 0 0 auto; margin-top: 1px; }
+
+.alert--info    { background: var(--info-50);    border-color: var(--info-100);    color: var(--info-700); }
+.alert--success { background: var(--success-50); border-color: var(--success-100); color: var(--success-700); }
+.alert--warning { background: var(--warning-50); border-color: var(--warning-100); color: var(--warning-700); }
+.alert--danger  { background: var(--danger-50);  border-color: var(--danger-100);  color: var(--danger-700); }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+
+/* ==========================================================================
+   Smart Water Guardian â€” Tabs / Toasts / Modal / Skeleton / Tooltip / Icon
+   ========================================================================== */
+
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  padding: 5px;
+  background: var(--bg-sunken);
+  border-radius: var(--radius-md);
+}
+
+.tabs__btn {
+  flex: 1;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.tabs__btn:hover { color: var(--navy-700); }
+
+.tabs__btn[aria-selected="true"] {
+  background: var(--bg-surface);
+  color: var(--navy-700);
+  box-shadow: var(--shadow-sm);
+}
+
+.toast-stack {
+  position: fixed;
+  top: var(--space-5);
+  right: var(--space-5);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: min(380px, calc(100vw - 2 * var(--space-5)));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--navy-700);
+  box-shadow: var(--shadow-lg);
+  animation: toast-in var(--dur-slow) var(--ease-out);
+}
+
+.toast--success { border-left-color: var(--success-500); }
+.toast--error   { border-left-color: var(--danger-500); }
+.toast--info    { border-left-color: var(--info-500); }
+
+.toast__icon { flex: 0 0 auto; color: var(--navy-700); }
+.toast--success .toast__icon { color: var(--success-500); }
+.toast--error   .toast__icon { color: var(--danger-500); }
+.toast--info    .toast__icon { color: var(--info-500); }
+.toast__icon .icon { width: 20px; height: 20px; }
+
+.toast__title { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.toast__body  { font-size: var(--text-xs); color: var(--text-secondary); margin-top: 2px; }
+
+.toast.is-leaving { animation: toast-out var(--dur-base) var(--ease-out) forwards; }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes toast-out {
+  to { opacity: 0; transform: translateX(24px) scale(0.97); }
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--bg-overlay);
+  backdrop-filter: blur(3px);
+  animation: fade-in var(--dur-base) var(--ease-out);
+}
+
+.modal {
+  width: min(520px, 100%);
+  max-height: calc(100vh - 2 * var(--space-8));
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  animation: modal-in var(--dur-slow) var(--ease-out);
+}
+
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-6) var(--space-4);
+}
+
+.modal__title { font-size: var(--text-xl); }
+
+.modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.modal__close:hover { background: var(--bg-sunken); color: var(--navy-700); }
+.modal__close .icon { width: 18px; height: 18px; }
+
+.modal__body { padding: 0 var(--space-6) var(--space-6); }
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6) var(--space-6);
+}
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.skeleton {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--bg-sunken) 25%,
+    #E4EBF5 37%,
+    var(--bg-sunken) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+.tooltip-host { position: relative; }
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--navy-800);
+  color: var(--text-on-dark);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  z-index: 60;
+  box-shadow: var(--shadow-md);
+}
+
+.tooltip-host:hover .tooltip { opacity: 1; }
+
+/* ==========================================================================
+   ICON BASE â€” sizes are fixed so inline SVGs never blow up the layout
+   ========================================================================== */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--filled { fill: currentColor; stroke: none; }
+
+
